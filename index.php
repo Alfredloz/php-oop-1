@@ -12,17 +12,32 @@ class VideoGame {
     $this->year = $year;
     $this->author = $author;
     $this->genre = $genre;
-    }   
+    } 
+    public function getTitle(){
+       return $this->title; 
+    } 
+    public function getCover(){
+        return $this->cover;
+    } 
+    public function getYear(){
+        return $this->year;
+    }
+    public function getAuthor(){
+        return $this->author;
+    }
+    public function getGenre(){
+        return $this->genre;
+    }
 };
 // Creazione dati
 
-$videoGame1 = new VideoGame('https://it.wikipedia.org/wiki/The_Legend_of_Zelda_(serie)#/media/File:Zeldalogowhite.PNG', 'The legend of Zelda', 1986, 'Shigeru Miyamoto & Takashi Tezuka ', 'High fantasy');
+$videoGame1 = new VideoGame('https://www.respawn.it/wp-content/uploads/2017/03/zelda-cover.jpg', 'The legend of Zelda', 1986, 'Shigeru Miyamoto & Takashi Tezuka ', 'High fantasy');
 
 $videoGame2 = new VideoGame('https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Mortal_Kombat_Logo.svg/1200px-Mortal_Kombat_Logo.svg.png', 'Mortal Kombat', 1992, ' Ed Boon & John Tobias', 'Picchiaduro');
 
-$videoGame3 = new Videogame('https://it.wikipedia.org/wiki/Metal_Gear_Solid#/media/File:Metal_Gear_Solid_logo.svg', 'Metal Gear Solid', 1998, 'Hideo Kojima', 'Stealth');
+$videoGame3 = new Videogame('https://images-na.ssl-images-amazon.com/images/I/51IOiivl-AL._AC_.jpg', 'Metal Gear Solid', 1998, 'Hideo Kojima', 'Stealth');
 
-$videoGame4 = new VideoGame('https://it.wikipedia.org/wiki/BioShock#/media/File:Bioshock_Logo.png', 'Bioshock', 2007, 'Ken Levine', 'Sparatutto / Survival horror');
+$videoGame4 = new VideoGame('https://gameindustry.it/wp-content/uploads/2020/08/H2x1_NSwitch_BioShockTheCollection-scaled.jpg', 'Bioshock', 2007, 'Ken Levine', 'Sparatutto / Survival horror');
 
 $videoGame5 = new VideoGame('https://store-images.s-microsoft.com/image/apps.18195.14259955503324792.fee0f975-9292-4852-ad19-c6ec880d57d3.35e9f104-1086-48a4-a429-c1c8dd863347', 'Hollow Knight', 2017, 'Team Cherry', 'Fantasy');
 // /Creazione dati
@@ -34,7 +49,7 @@ $videoGame3,
 $videoGame4,
 $videoGame5
 ];
-
+// var_dump($videoGameArray);
 // var_dump($videoGameArray);
  ?>
 <!DOCTYPE html>
@@ -44,13 +59,25 @@ $videoGame5
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-oop-1</title>
+    <style> 
+        img{
+            height: 200px;
+            width: auto;
+        }
+  </style>
 </head>
 <body>
+    <div class="card">
     <h1>Video Game</h1>
     <?php 
-   foreach ($videoGame1 as $game => $value) {?>
-        <h3><?php echo $game . ":" . $value ?></h3>
+   foreach ($videoGameArray as $game => $value) {?>
+        <img src="<?php echo $value->getCover() ?>" alt="">
+        <h3>titolo: <?php echo $value->getTitle() ?></h3>
+        <p>Autore/i: <?php echo $value->getAuthor() ?> </p>
+        <p>Anno: <?php echo $value->getYear() ?></p>
+        <p>Genere: <?php echo $value->getGenre() ?></p>
    <?php }
     ?>
+    </div>
 </body>
 </html>
