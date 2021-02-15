@@ -60,24 +60,36 @@ $videoGame5
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-oop-1</title>
     <style> 
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         img{
             height: 200px;
-            width: auto;
+            width: 100%;
+        }
+        .card{
+            height: 30rem;
+            width: 15rem;
+            border: 1px solid black;
         }
   </style>
 </head>
 <body>
-    <div class="card">
     <h1>Video Game</h1>
-    <?php 
+   <div class="box">
+   <?php 
    foreach ($videoGameArray as $game => $value) {?>
+    <div class="card">
         <img src="<?php echo $value->getCover() ?>" alt="">
         <h3>titolo: <?php echo $value->getTitle() ?></h3>
         <p>Autore/i: <?php echo $value->getAuthor() ?> </p>
         <p>Anno: <?php echo $value->getYear() ?></p>
         <p>Genere: <?php echo $value->getGenre() ?></p>
+        </div>
    <?php }
     ?>
-    </div>
+   </div>
 </body>
 </html>
